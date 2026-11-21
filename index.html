@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#173b35"><link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg"><link rel="stylesheet" href="style.css">
+<title>Reda Accounting</title>
+</head>
+<body>
+<header><div><small>نظام الإدارة المالية</small><h1>Reda Accounting</h1></div><span class="pill">النسخة التجريبية</span></header>
+<nav id="nav">
+<button class="active" data-page="home">الرئيسية</button><button data-page="accounts">دليل الحسابات</button>
+<button data-page="entries">القيود اليومية</button><button data-page="reports">التقارير</button>
+</nav>
+<main>
+<section id="home" class="page active">
+<h2>لوحة التحكم</h2><div class="cards"><article><small>إجمالي القيود</small><strong id="entryCount">0</strong></article><article><small>عدد الحسابات</small><strong id="accountCount">5</strong></article><article><small>صافي الحركة المدينة</small><strong id="debitTotal">0.00</strong></article></div>
+<div class="panel"><h3>ابدأ الاستخدام</h3><p>أضف حساباتك ثم سجّل القيود اليومية. البيانات محفوظة على هذا الجهاز.</p><button class="primary" onclick="showPage('entries')">إضافة قيد جديد</button></div>
+</section>
+<section id="accounts" class="page"><h2>دليل الحسابات</h2><form id="accountForm"><input id="accountName" placeholder="اسم الحساب" required><select id="accountType"><option>أصول</option><option>خصوم</option><option>حقوق ملكية</option><option>إيرادات</option><option>مصروفات</option></select><button class="primary">إضافة الحساب</button></form><div id="accountsList" class="list"></div></section>
+<section id="entries" class="page"><h2>القيود اليومية</h2><form id="entryForm">
+<label>التاريخ<input id="entryDate" type="date" required></label><label>البيان<input id="entryNote" placeholder="شرح القيد" required></label>
+<div class="two"><label>الحساب المدين<select id="debitAccount"></select></label><label>الحساب الدائن<select id="creditAccount"></select></label></div>
+<label>المبلغ بالجنيه<input id="entryAmount" type="number" min="0.01" step="0.01" required></label>
+<button class="primary">حفظ القيد</button></form><div id="entriesList" class="list"></div></section>
+<section id="reports" class="page"><h2>التقارير المختصرة</h2><div class="panel"><h3>ملخص القيود</h3><p>إجمالي المدين: <b id="rDebit">0.00</b> جنيه</p><p>إجمالي الدائن: <b id="rCredit">0.00</b> جنيه</p><p>فرق الميزان: <b id="rDiff">0.00</b> جنيه</p></div><button class="secondary" onclick="exportData()">تصدير نسخة احتياطية JSON</button><p class="hint">هذه نسخة أولية للتدريب والتنظيم وليست بديلًا عن برنامج محاسبي معتمد أو مراجعة محاسب.</p></section>
+</main><footer>Reda Accounting · بياناتك محفوظة محليًا على جهازك</footer>
+<script src="app.js"></script>
+</body></html>
